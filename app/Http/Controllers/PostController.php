@@ -80,10 +80,11 @@ class PostController extends Controller
             'type' => 'required',
             'content' => 'required|min:5|',
             'description' => 'required',
-            'published' => ''
         ]);
 
-        $post->update($val);
+        $pub = request('published') == 'on';
+
+        $post->update($val + ['published' => $pub]);
 
         return redirect(route('posts.index'));
     }

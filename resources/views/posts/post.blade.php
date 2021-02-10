@@ -11,7 +11,7 @@
                             <strong class="d-inline-block mb-2 text-primary">{{ $article->type }}</strong>
                             <h3 class="mb-0">{{ $article->title }}</h3>
                             <div class="mb-1 text-muted">{{ $article->created_at }}</div>
-                            <p class="card-text mb-auto">{{ mb_substr($article->content, 0, 140) }}</p>
+                            <p class="card-text mb-auto">{{ mb_substr($article->description, 0, 140) }}</p>
                             <a href="/posts/{{ $article->getKey() }}" class="stretched-link">Читать дальше...</a>
                         </div>
                         <div class="col-auto d-none d-lg-block">
