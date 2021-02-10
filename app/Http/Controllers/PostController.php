@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Classes\FormRequest;
 use App\Models\Articles;
 use App\Models\Types;
 use Illuminate\Http\Request;
-use MongoDB\BSON\Type;
 
 class PostController extends Controller
 {
@@ -22,7 +22,6 @@ class PostController extends Controller
      */
     public function create()
     {
-
         return view('posts.create', ['types' => Types::all()]);
     }
 
@@ -37,7 +36,7 @@ class PostController extends Controller
             'title' => 'required|min:5|max:50',
             'type' => 'required',
             'content' => 'required|min:5|',
-            'description' => 'required',
+            'description' => 'required'
         ]);
 
         $pub = $request->get('published') == 'on';
