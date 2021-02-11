@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Classes\FormRequest;
-use App\Http\Requests\FormRequester;
+use App\Http\Requests\CreateFormRequester;
+use App\Http\Requests\UpdateRequester;
 use App\Models\Articles;
 use App\Models\Types;
-use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
@@ -31,7 +30,7 @@ class PostController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      */
-    public function store(FormRequester $request)
+    public function store(CreateFormRequester $request)
     {
         Articles::create($request->all());
 
@@ -63,18 +62,9 @@ class PostController extends Controller
      *
      * @param  Articles  $post
      */
-    public function update(Articles $post)
+    public function update(UpdateRequester $request, Articles $post)
     {
-        $val = $this->validate(\request(), [
-            'title' => 'required|min:5|max:50',
-            'type' => 'required',
-            'content' => 'required|min:5|',
-            'description' => 'required',
-        ]);
-
-        $pub = request('published') == 'on';
-
-        $post->update($val + ['published' => $pub]);
+        $post->update($request->all());
 
         return redirect(route('posts.index'));
     }

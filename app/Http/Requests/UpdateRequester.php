@@ -4,9 +4,8 @@ namespace App\Http\Requests;
 
 use App\Models\Articles;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\DB;
 
-class FormRequester extends FormRequest
+class UpdateRequester extends FormRequest
 {
 
     /**
@@ -31,18 +30,5 @@ class FormRequester extends FormRequest
             'author_id' => 1,
             'published' => $this->request->get('published') == 'on'
         ]);
-    }
-
-    public function withValidator($validator)
-    {
-        $validator->after(function ($validator) {
-            $article = new Articles();
-
-            $slug = $article::getSlug($this->request->get('title'));
-
-            $query = DB::table($article->getTable())->where($article->getKeyName(), '=', $slug)->get();
-            if (!$query->isEmpty())
-                $validator->errors()->add('field', 'This title is exists');
-        });
     }
 }
