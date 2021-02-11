@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Classes\FormRequest;
+use App\Http\Requests\FormRequester;
 use App\Models\Articles;
 use App\Models\Types;
 use Illuminate\Http\Request;
@@ -30,18 +31,10 @@ class PostController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      */
-    public function store(Request $request)
+    public function store(FormRequester $request)
     {
-        $val = $this->validate($request, [
-            'title' => 'required|min:5|max:50',
-            'type' => 'required',
-            'content' => 'required|min:5|',
-            'description' => 'required'
-        ]);
 
-        $pub = $request->get('published') == 'on';
 
-        $val += ['slug' => Articles::getSlug($val['title']), 'author_id' => 1, 'published' => $pub];
 
         Articles::create($val);
 
