@@ -8,12 +8,6 @@ use Illuminate\Support\Facades\DB;
 
 class CreateFormRequester extends FormRequest
 {
-
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
     public function rules()
     {
         return [
