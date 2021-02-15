@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CreateFormRequester;
-use App\Http\Requests\UpdateRequester;
+use App\Http\Requests\Requester;
 use App\Models\Articles;
 use App\Models\Types;
 
@@ -14,12 +13,12 @@ class PostController extends Controller
         return view('posts.post');
     }
 
-    public function create()
+    public function create(Articles $art)
     {
-        return view('posts.create', ['types' => Types::all()]);
+        return view('posts.create', ['article' => $art, 'types' => Types::all()]);
     }
 
-    public function store(CreateFormRequester $request)
+    public function store(Requester $request)
     {
         Articles::create($request->all());
 
@@ -36,7 +35,7 @@ class PostController extends Controller
         return view('posts.edit', ['article' => $post]);
     }
 
-    public function update(UpdateRequester $request, Articles $post)
+    public function update(Requester $request, Articles $post)
     {
         $post->update($request->all());
 

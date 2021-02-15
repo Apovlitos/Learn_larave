@@ -5,16 +5,16 @@ namespace App\Http\Requests;
 use App\Models\Articles;
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateRequester extends FormRequest
+class Requester extends FormRequest
 {
-
     public function rules()
     {
         return [
             'title' => 'required|min:5|max:50',
             'type' => 'required',
             'content' => 'required|min:5|',
-            'description' => 'required'
+            'description' => 'required',
+            'slug' => 'unique:articles'
         ];
     }
 
