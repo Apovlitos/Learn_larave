@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use App\Models\Articles;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class Requester extends FormRequest
 {
@@ -14,7 +15,7 @@ class Requester extends FormRequest
             'type' => 'required',
             'content' => 'required|min:5|',
             'description' => 'required',
-            'slug' => 'unique:articles'
+            'slug' => Rule::unique("articles")->ignore($this->route()->parameter('post'))
         ];
     }
 
