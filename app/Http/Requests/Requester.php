@@ -15,7 +15,14 @@ class Requester extends FormRequest
             'type' => 'required',
             'content' => 'required|min:5|',
             'description' => 'required',
-            'slug' => Rule::unique("articles")->ignore($this->route()->parameter('post'))
+            'slug' => [
+                'required',
+                $this->route()->parameter('post') != null ?
+                    Rule::unique("articles")
+                        ->ignore($this->route()
+                            ->parameter('post')) :
+                    Rule::unique("articles")
+            ]
         ];
     }
 
