@@ -4,18 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Requester;
 use App\Models\Articles;
-use App\Models\Types;
 
 class PostController extends Controller
 {
     public function index()
     {
-        return view('posts.post');
+        return view('posts.post', ['articles' => Articles::all()]);
     }
 
     public function create(Articles $art)
     {
-        return view('posts.create', ['article' => $art, 'types' => Types::all()]);
+        return view('posts.create', ['article' => $art]);
     }
 
     public function store(Requester $request)

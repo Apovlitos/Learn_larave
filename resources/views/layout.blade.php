@@ -9,6 +9,7 @@
     <title>Blog Template · Bootstrap v5.0</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/blog/">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
 
 
