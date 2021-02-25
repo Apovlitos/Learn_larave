@@ -1,5 +1,7 @@
 @extends('layout')
 
+@section('title', 'Главная')
+
 @section('posts')
     <div class="row mb-2">
         @foreach($articles as $article)
