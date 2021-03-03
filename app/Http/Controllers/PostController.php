@@ -37,8 +37,10 @@ class PostController extends Controller
     public function edit(Articles $post)
     {
         $tags = '';
-        foreach ($post->tags as $tag){
-            $tags .= " #" . $tag->name;
+        if ($post->tags->isNotEmpty()) {
+            foreach ($post->tags as $tag) {
+                $tags .= " #" . $tag->name;
+            }
         }
         return view('posts.edit', ['article' => $post, 'tags' => trim($tags)]);
     }

@@ -12,7 +12,7 @@
                         <div class="col p-4 d-flex flex-column position-static">
                             <strong
                                 class="d-inline-block mb-2 text-primary">
-                                @foreach($article->tags as $tag){{ $tag->name }} @endforeach
+                                @foreach($article->tags as $tag)#{{ $tag->name }} @endforeach
                             </strong>
                             <h3 class="mb-0">{{ $article->title }}</h3>
                             <div class="mb-1 text-muted">{{ $article->created_at }}</div>
