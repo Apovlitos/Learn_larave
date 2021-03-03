@@ -9,6 +9,15 @@ class Tags extends Model
 {
     use HasFactory;
 
+    protected $guarded = ['id'];
+
+    public $timestamps = false;
+
+    public function getRouteKey()
+    {
+        return 'name';
+    }
+
     public function articles()
     {
         return $this->belongsToMany(Articles::class);

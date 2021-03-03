@@ -12,7 +12,6 @@ class Requester extends FormRequest
     {
         return [
             'title' => 'required|min:5|max:50',
-            'type' => 'required',
             'content' => 'required|min:5|',
             'description' => 'required',
             'slug' => [
