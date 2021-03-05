@@ -13,7 +13,7 @@ class Tags extends Model
 
     public $timestamps = false;
 
-    public function getRouteKey()
+    public function getRouteKeyName()
     {
         return 'name';
     }
