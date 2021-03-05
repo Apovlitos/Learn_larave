@@ -18,13 +18,13 @@ class PostController extends Controller
         return view('posts.create', ['article' => $art]);
     }
 
-    public function store(Requester $request)
+    public function store(Requester $request, TagsSynchronizer $tag)
     {
-        $art = Articles::create($request->all());
+        $art = Articles::create($request->validated());
 
-        $tags = TagsSynchronizer::parse($request->get('tags'));
+        $tags = $tag->parse($request->get('tags'));
 
-        TagsSynchronizer::sync($tags, $art);
+        $tag->sync($tags, $art);
 
         return redirect(route('posts.index'));
     }
@@ -45,13 +45,13 @@ class PostController extends Controller
         return view('posts.edit', ['article' => $post, 'tags' => trim($tags)]);
     }
 
-    public function update(Requester $request, Articles $post)
+    public function update(Requester $request, Articles $post, TagsSynchronizer $tag)
     {
-        $post->update($request->all());
+        $post->update($request->validated());
 
-        $tags = TagsSynchronizer::parse($request->get('tags'));
+        $tags = $tag->parse($request->get('tags'));
 
-        TagsSynchronizer::sync($tags, $post);
+        $tag->sync($tags, $post);
 
         return redirect(route('posts.index'));
     }

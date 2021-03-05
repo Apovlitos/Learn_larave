@@ -76,7 +76,7 @@
 
     <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
         <div class="col-md-6 px-0">
-            @foreach(\App\Models\Tags::all() as $tag)
+            @foreach($tagsCloud as $tag)
                 <a href="{{ route('filter', $tag->name) }}" class="btn btn-outline-light btn-sm rounded-pill">{{ $tag->name }}</a>
             @endforeach
         </div>

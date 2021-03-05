@@ -11,7 +11,7 @@ use Illuminate\Support\Collection;
 
 class TagsSynchronizer
 {
-    static public function sync(Collection $tags, Articles $post)
+    public function sync(Collection $tags, Articles $post)
     {
         $artTags = $post->tags->keyBy('name');
 
@@ -29,7 +29,7 @@ class TagsSynchronizer
         }
     }
 
-    static public function parse($string){
+    public function parse($string){
         foreach (explode('#', $string) as $tag){
             $tags[] = trim($tag);
         }

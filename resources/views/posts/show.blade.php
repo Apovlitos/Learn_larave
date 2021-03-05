@@ -9,5 +9,5 @@
         <p>{{ $article->content }}</p>
     </div>
     <br>
-    <a href="/posts/{{ $article->getRouteKey() }}/edit" class="btn btn-primary">Изменить статью</a>
+    <a href="{{ route('posts.edit', $article->getRouteKey()) }}" class="btn btn-primary">Изменить статью</a>
 @endsection
