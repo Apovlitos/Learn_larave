@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Articles;
 use App\Models\Tags;
 
 class TagController extends Controller

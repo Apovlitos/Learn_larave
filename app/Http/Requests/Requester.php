@@ -21,7 +21,9 @@ class Requester extends FormRequest
                         ->ignore($this->route()
                             ->parameter('post')) :
                     Rule::unique("articles")
-            ]
+            ],
+            'published' => 'required',
+            'author_id' => '',
         ];
     }
 
