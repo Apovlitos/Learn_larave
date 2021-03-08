@@ -9,17 +9,10 @@ class TagController extends Controller
 {
     public function filter(Tags $tag)
     {
-        $articles = Articles::all();
-
         $arts = [];
 
-        foreach ($articles as $article){
-            foreach ($article->tags as $tags){
-                if ($tags->name == $tag->name){
-                    $arts[] = $article;
-                    break;
-                }
-            }
+        foreach ($tag->articles as $art){
+            $arts[] = $art;
         }
         return view('posts.post', ['articles' => $arts]);
     }
