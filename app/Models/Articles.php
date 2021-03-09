@@ -9,11 +9,12 @@ class Articles extends Model
 {
     use HasFactory;
 
-    protected $guarded = [];
+    protected $guarded = ['id'];
 
-    protected $primaryKey = 'slug';
-
-    protected $keyType = 'string';
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 
     static public function getSlug(string $str)
     {
@@ -38,5 +39,10 @@ class Articles extends Model
         ];
 
         return str_replace($ru, $en, $str);
+    }
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tags::class);
     }
 }

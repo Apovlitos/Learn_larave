@@ -1,5 +1,7 @@
 @extends('layout')
 
+@section('title', 'Создать статью')
+
 @section('posts')
     @if($errors->count())
         <div class="alert alert-danger mt4">

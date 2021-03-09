@@ -12,7 +12,6 @@ class Requester extends FormRequest
     {
         return [
             'title' => 'required|min:5|max:50',
-            'type' => 'required',
             'content' => 'required|min:5|',
             'description' => 'required',
             'slug' => [
@@ -22,7 +21,9 @@ class Requester extends FormRequest
                         ->ignore($this->route()
                             ->parameter('post')) :
                     Rule::unique("articles")
-            ]
+            ],
+            'published' => 'required',
+            'author_id' => '',
         ];
     }
 

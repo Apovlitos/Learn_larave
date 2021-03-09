@@ -3,8 +3,8 @@
 <input type="text" id="inputEmail" class="form-control" name="title" value="{{ old('title', $article->title) }}"
        minlength="5"
        maxlength="100">
-<label for="inputPassword">Тематика:</label>
-<input type="text" id="type" class="form-control" value="{{ old('type', $article->type) }}" name="type">
+<label for="inputPassword">Тэги:</label>
+<input type="text" id="tags" class="form-control" value="{{ old('tags', $tags ?? '') }}" name="tags">
 <label for="inputPassword">Описание:</label>
 <textarea id="inputPassword" class="form-control" name="description" rows="3"
           maxlength="255">{{ old('description', $article->description) }}</textarea>

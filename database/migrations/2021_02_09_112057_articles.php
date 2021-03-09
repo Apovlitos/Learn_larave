@@ -21,7 +21,6 @@ class Articles extends Migration
             $table->text('description');
             $table->boolean('published');
             $table->unsignedInteger('author_id');
-            $table->string('type');
             $table->timestamps();
         });
     }

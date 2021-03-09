@@ -1,18 +1,23 @@
 @extends('layout')
 
+@section('title', 'Главная')
+
 @section('posts')
     <div class="row mb-2">
-        @foreach(\App\Models\Articles::all() as $article)
+        @foreach($articles as $article)
             @if($article->published)
                 <div class="col-md-6">
                     <div
                         class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                         <div class="col p-4 d-flex flex-column position-static">
-                            <strong class="d-inline-block mb-2 text-primary">{{ $article->type }}</strong>
+                            <strong
+                                class="d-inline-block mb-2 text-primary">
+                                @foreach($article->tags as $tag)#{{ $tag->name }} @endforeach
+                            </strong>
                             <h3 class="mb-0">{{ $article->title }}</h3>
                             <div class="mb-1 text-muted">{{ $article->created_at }}</div>
                             <p class="card-text mb-auto">{{ mb_substr($article->description, 0, 140) }}</p>
-                            <a href="/posts/{{ $article->getKey() }}" class="stretched-link">Читать дальше...</a>
+                            <a href="/posts/{{ $article->getRouteKey() }}" class="stretched-link">Читать дальше...</a>
                         </div>
                         <div class="col-auto d-none d-lg-block">
                             <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg"
